@@ -15,32 +15,24 @@ Track user interactions, clicks, and profile views
 
 🏗️ Architecture Overview
 
-Frontend (UI)
- └─ Next.js 14 + React 18
- └─ Tailwind CSS + Framer Motion
- └─ Deployed on Vercel
-
-API Gateway Layer
- └─ Implemented as Next.js API Routes or a separate NestJS backend
-
-Services
- ├─ User Auth Service
- │   └─ Clerk / NextAuth, JWT, social login
- ├─ Portfolio Service
- │   └─ Projects, resume, blogs
- └─ Analytics Service
-     └─ Tracks profile views, clicks, interactions
-
-Data Stores
- ├─ PostgreSQL: users, projects, resume, blogs
- ├─ Redis: trending projects, recently viewed items
- └─ Meilisearch: fast text search for projects/skills
-
-DevOps & Monitoring
- ├─ Docker + GitHub Actions CI/CD
- ├─ Hosting: Vercel (frontend) + Railway/Render (backend)
- └─ Observability: Sentry (errors), Grafana Cloud (metrics)
-
+- **Frontend (UI)**
+  - Next.js 14 + React 18
+  - Tailwind CSS + Framer Motion
+  - Deployed on Vercel
+- **API Gateway Layer**
+  - Implemented as Next.js API Routes or a separate NestJS backend
+- **Services**
+  - User Auth Service: Clerk / NextAuth, JWT, social login
+  - Portfolio Service: Projects, resume, blogs
+  - Analytics Service: Tracks profile views, clicks, interactions
+- **Data Stores**
+  - PostgreSQL: users, projects, resume, blogs
+  - Redis: trending projects, recently viewed items
+  - Meilisearch: fast text search for projects/skills
+- **DevOps & Monitoring**
+  - Docker + GitHub Actions CI/CD
+  - Hosting: Vercel (frontend) + Railway/Render (backend)
+  - Observability: Sentry (errors), Grafana Cloud (metrics)
 
 🧰 Tech Stack
 
