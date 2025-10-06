@@ -14,6 +14,7 @@ Track user interactions, clicks, and profile views
 
 
 🏗️ Architecture Overview
+
 Frontend (UI)
  └─ Next.js 14 + React 18
  └─ Tailwind CSS + Framer Motion
