@@ -2,115 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
-@layer base {
-  :root {
-    /* Netflix-inspired color palette */
-    --background: 0 0% 8%;
-    --foreground: 0 0% 98%;
-
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
-
-    /* Netflix Red as primary */
-    --primary: 0 100% 45%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 18%;
-    --muted-foreground: 0 0% 65%;
-
-    --accent: 0 100% 45%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 100% 45%;
-
-    --radius: 0.25rem;
-
-    /* Gradients for depth */
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 8% / 0) 0%, hsl(0 0% 8% / 0.8) 60%, hsl(0 0% 8%) 100%);
-    --gradient-hero: linear-gradient(90deg, hsl(0 0% 8% / 0.95) 0%, hsl(0 0% 8% / 0.4) 60%, hsl(0 0% 8% / 0) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 8%) 100%);
-    
-    /* Shadows with Netflix red glow */
-    --shadow-glow: 0 0 40px hsl(0 100% 45% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-    
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+/* Netflix-style dark theme */
+:root {
+  --background: hsl(0, 0%, 8%);
+  --foreground: hsl(0, 0%, 98%);
+  --primary: hsl(0, 100%, 45%);
+  --secondary: hsl(0, 0%, 20%);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted));
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground));
-  }
+body {
+  @apply bg-[hsl(0,0%,8%)] text-white antialiased;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  /* Netflix-style text gradients */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-red-600;
-  }
+/* Gradient text used in Hero titles */
+.text-gradient {
+  background: linear-gradient(90deg, #ff0000, #ff4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  /* Hover scale animation */
-  .hover-scale {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+/* Smooth animations */
+@keyframes fade-in-slow {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  .hover-scale:hover {
-    transform: scale(1.05);
-  }
+.animate-fade-in-slow {
+  animation: fade-in-slow 1s ease-out forwards;
+}
 
-  /* Card hover effect */
-  .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+/* Red glow pulse (for your name in Hero) */
+@keyframes glow-pulse {
+  0%, 100% { text-shadow: 0 0 10px #ff0000; }
+  50% { text-shadow: 0 0 25px #ff4d4d; }
+}
 
-  .card-hover:hover {
-    transform: scale(1.05) translateZ(0);
-    box-shadow: var(--shadow-glow);
-  }
+.animate-glow-pulse {
+  animation: glow-pulse 2s infinite alternate;
 }
