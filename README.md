@@ -1,48 +1,54 @@
-# Welcome to your Lovable project
+Netflix-Style Portfolio
 
-## Project info
+A modern, Netflix-inspired portfolio showcasing projects, resumes, blogs, and user analytics — built with a modular, scalable architecture in mind.
 
- ## **URL**: https://lovable.dev/projects/6d92d394-754a-4a7f-b16b-5c354ec5e431
+Note: This repository currently outlines the full architecture and tech plan. Implementation is ongoing.
 
-## How can I edit this code?
+🎯 Project Goals
 
-# There are several ways of editing your application.
+Showcase portfolio items, resume, and blogs in a smooth, interactive UI
 
-# **Use Lovable**
+Provide user authentication with social logins
 
-# Simply visit the [Lovable Project](https://lovable.dev/projects/6d92d394-754a-4a7f-b16b-5c354ec5e431) and start prompting.
+Track user interactions, clicks, and profile views
 
-# Changes made via Lovable will be committed automatically to this repo.
 
-**Use your preferred IDE**
+🏗️ Architecture Overview
 
-# If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Frontend (UI)**
+  - Next.js 14 + React 18
+  - Tailwind CSS + Framer Motion
+  - Deployed on Vercel
+- **API Gateway Layer**
+  - Implemented as Next.js API Routes or a separate NestJS backend
+- **Services**
+  - User Auth Service: Clerk / NextAuth, JWT, social login
+  - Portfolio Service: Projects, resume, blogs
+  - Analytics Service: Tracks profile views, clicks, interactions
+- **Data Stores**
+  - PostgreSQL: users, projects, resume, blogs
+  - Redis: trending projects, recently viewed items
+  - Meilisearch: fast text search for projects/skills
+- **DevOps & Monitoring**
+  - Docker + GitHub Actions CI/CD
+  - Hosting: Vercel (frontend) + Railway/Render (backend)
+  - Observability: Sentry (errors), Grafana Cloud (metrics)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+🧰 Tech Stack
 
-Follow these steps:
+Frontend: Next.js 14, React 18, Tailwind CSS, Framer Motion
+Backend: Next.js API Routes / NestJS
+Databases: PostgreSQL, Redis, Meilisearch
+Auth: Clerk / NextAuth
+DevOps: Docker, GitHub Actions, Vercel, Railway/Render
+Monitoring: Sentry, Grafana Cloud
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+🌱 Status
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Architecture defined
 
-# Step 3: Install the necessary dependencies.
-npm i
+- Frontend scaffolding planned
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+- Backend microservices design completed
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
+- CI/CD and observability pipelines planned
