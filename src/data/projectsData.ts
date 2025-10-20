@@ -1,0 +1,44 @@
+export const projects = [
+  {
+    title: "Fault-Tolerant Distributed Data Storage System",
+    teaser:
+      "What if a node crashes mid-write? This system ensures your data never goes dark, even under failures.",
+    description: `Built a 5-node distributed storage cluster handling 100k+ key-value records. Implemented Zookeeper-based leader election and GigaPaxos consensus to achieve totally ordered writes, automatic failover, and <100 ms latency under simulated crashes.`,
+    tech: "Java, Cassandra, Zookeeper, GigaPaxos",
+  },
+  {
+    title: "Real-Time System Monitor",
+    teaser:
+      "Imagine watching 20 devices breathe in real time — CPU spikes, memory surges, all live.",
+    description: `Developed a real-time monitoring platform with Go backend, Python agents, and Flutter dashboard streaming metrics via gRPC/WebSockets with <200 ms latency and 120 FPS visuals.`,
+    tech: "Go, Python, Flutter, gRPC, WebSockets",
+  },
+  {
+    title: "Elevation-Based Navigation System",
+    teaser:
+      "Ever wish Google Maps cared about hills? This app plots routes that respect your legs.",
+    description: `Built a MERN-stack elevation-aware routing tool using Google Maps API, cutting elevation gain by 15% and travel time by 10% across 50 scenarios.`,
+    tech: "MongoDB, Express.js, React, Node.js, Google Maps API",
+  },
+  {
+    title: "AWS-Powered Breast Cancer Detection System",
+    teaser:
+      "What if early detection could scale infinitely? This serverless ML system makes it possible.",
+    description: `Engineered a SageMaker-based classifier reaching 96% accuracy and 1,000+ predictions/s. Integrated Lambda + API Gateway for 200 ms model inference.`,
+    tech: "AWS SageMaker, Lambda, API Gateway, S3, Python",
+  },
+  {
+    title: "Spotify Clone",
+    teaser:
+      "Recreating Spotify wasn’t the goal — matching its heartbeat was.",
+    description: `Built a responsive Next.js music app with Supabase/PostgreSQL backend and Stripe integration. Achieved 95% usability satisfaction and 20% faster playlist retrieval.`,
+    tech: "React.js, Next.js, Supabase, PostgreSQL, Stripe, Tailwind CSS",
+  },
+  {
+    title: "Multiplayer UNO Game App",
+    teaser:
+      "What if UNO went online and never lagged?",
+    description: `Developed a real-time multiplayer UNO game in React Native using WebSockets over TCP for <1% packet loss and 99.5% uptime; managed state with Redux.`,
+    tech: "React Native, Redux, JavaScript, WebSockets",
+  },
+];

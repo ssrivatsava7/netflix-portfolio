@@ -1,101 +1,56 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { ExternalLink, Github } from "lucide-react";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-
-const projects = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "A modern, scalable e-commerce solution with real-time inventory management",
-    image: project1,
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    github: "#",
-    live: "#",
-  },
-  {
-    id: 2,
-    title: "Analytics Dashboard",
-    description: "Real-time data visualization dashboard for business intelligence",
-    image: project2,
-    tags: ["Next.js", "D3.js", "Redis", "GraphQL"],
-    github: "#",
-    live: "#",
-  },
-  {
-    id: 3,
-    title: "Social Media App",
-    description: "Feature-rich social platform with real-time messaging and feeds",
-    image: project3,
-    tags: ["React Native", "Firebase", "WebSockets"],
-    github: "#",
-    live: "#",
-  },
-];
+import React, { useState } from "react";
+import { projects } from "../data/projectsData";
 
 const ProjectCarousel = () => {
-  return (
-    <section id="projects" className="py-16 sm:py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl">
-            Explore my latest work showcasing modern web technologies and innovative solutions
-          </p>
-        </div>
+  const [selectedProject, setSelectedProject] = useState<any>(null);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((project, index) => (
-            <Card
-              key={project.id}
-              className="group bg-card border-border overflow-hidden card-hover cursor-pointer"
-              style={{ animationDelay: `${index * 0.1}s` }}
+  return (
+    <section id="projects" className="relative py-20 bg-black text-white">
+      <div className="container mx-auto px-6">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+          Featured <span className="text-red-500">Projects</span>
+        </h2>
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, i) => (
+            <div
+              key={i}
+              onClick={() => setSelectedProject(project)}
+              className="bg-gray-900 rounded-xl p-6 cursor-pointer hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,0,0.5)] transition-transform duration-300"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 sm:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a
-                    href={project.github}
-                    className="p-3 bg-background/80 rounded-full hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <Github size={20} />
-                  </a>
-                  <a
-                    href={project.live}
-                    className="p-3 bg-background/80 rounded-full hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-gray-400">{project.teaser}</p>
+              <p className="text-red-500 mt-2 italic text-sm">Click for more info ▶</p>
+            </div>
           ))}
         </div>
+
+        {/* Modal */}
+        {selectedProject && (
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50">
+            <div className="bg-gray-900 max-w-lg w-full rounded-2xl p-8 relative shadow-[0_0_50px_rgba(255,0,0,0.6)]">
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-xl font-bold"
+              >
+                ✕
+              </button>
+              <h3 className="text-2xl font-bold mb-4 text-red-500">
+                {selectedProject.title}
+              </h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                {selectedProject.description}
+              </p>
+              <div>
+                <h4 className="text-sm text-gray-400 mb-1">Tech Stack:</h4>
+                <p className="text-gray-200 font-mono">
+                  {selectedProject.tech}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
