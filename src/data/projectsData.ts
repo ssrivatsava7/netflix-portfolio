@@ -28,6 +28,16 @@ export const projects = [
     tech: "AWS SageMaker, Lambda, API Gateway, S3, Python",
   },
   {
+  title: "Titanic Survival Analysis",
+  teaser:
+    "What if data could have saved more lives that night? This analysis dives deep into survival odds aboard the Titanic.",
+  description: `Analyzed historical Titanic passenger data using Snowflake SQL and Python, uncovering survival patterns across age, gender, and class.
+Trained a Gradient Boosted Tree model in TensorFlow (~88% accuracy) to validate hypotheses and confirm key feature importance.
+Created interactive Plotly visualizations enabling dynamic exploration of survival trends across 800+ passengers.`,
+  tech: "Python, Pandas, Plotly, Snowflake, TensorFlow",
+},
+
+  {
     title: "Spotify Clone",
     teaser:
       "Recreating Spotify wasn’t the goal — matching its heartbeat was.",
