@@ -81,11 +81,18 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button
               size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 
-              shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.7)] transition-shadow duration-300"
-            >
-              ▶ Play My Work
+              onClick={() => {
+              const section = document.getElementById("projects");
+              if (section) {
+               section.scrollIntoView({ behavior: "smooth" });
+              }
+              }}
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 
+                shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.7)] transition-shadow duration-300"
+              >
+               ▶ Play My Work
             </Button>
+
 
             <Button
               size="lg"
