@@ -94,3 +94,19 @@ body {
 .animate-slideUp {
   animation: slideUp 0.4s ease-out forwards;
 }
+/* Red glow pulse animation */
+@keyframes redPulse {
+  0% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+  }
+}
+
+.animate-redPulse {
+  animation: redPulse 2.5s infinite ease-in-out;
+}

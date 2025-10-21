@@ -3,6 +3,7 @@ import { projects } from "../data/projectsData";
 
 const ProjectCarousel = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section id="projects" className="relative py-20 bg-black text-white">
@@ -11,25 +12,39 @@ const ProjectCarousel = () => {
           Featured <span className="text-red-500">Projects</span>
         </h2>
 
-        {/* --- Project Grid --- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* --- Netflix-Style Project Grid --- */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
           {projects.map((project, i) => (
             <div
               key={i}
               onClick={() => setSelectedProject(project)}
-              className="relative group rounded-xl overflow-hidden bg-gray-900 cursor-pointer transition-transform duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(255,0,0,0.5)]"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`relative group rounded-xl overflow-hidden bg-gray-900 cursor-pointer transition-all duration-300 ${
+                hoveredIndex === i
+                  ? "scale-[1.08] z-20 shadow-[0_0_60px_rgba(255,0,0,0.6)] animate-redPulse"
+                  : "scale-100"
+              }`}
             >
-              {/* Project Image */}
+              {/* Image */}
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-56 object-cover brightness-75 group-hover:brightness-100 transition-all duration-300"
+                className={`w-full h-56 object-cover transition-all duration-500 ${
+                  hoveredIndex === i
+                    ? "brightness-100"
+                    : "brightness-75 group-hover:brightness-100"
+                }`}
               />
 
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90 group-hover:opacity-75 transition-opacity duration-300" />
+              {/* Cinematic Overlay */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-all duration-500 ${
+                  hoveredIndex === i ? "opacity-80" : "opacity-90"
+                }`}
+              />
 
-              {/* Project Info Overlay */}
+              {/* Text Content */}
               <div className="absolute bottom-0 p-5">
                 <h3 className="text-xl font-semibold mb-1 text-white drop-shadow-lg">
                   {project.title}
@@ -60,7 +75,6 @@ const ProjectCarousel = () => {
                 ✕
               </button>
 
-              {/* Poster Image inside Modal */}
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
@@ -70,7 +84,6 @@ const ProjectCarousel = () => {
               <h3 className="text-2xl font-bold mb-4 text-red-500">
                 {selectedProject.title}
               </h3>
-
               <p className="text-gray-300 leading-relaxed mb-4 whitespace-pre-line">
                 {selectedProject.description}
               </p>
