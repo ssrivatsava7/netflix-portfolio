@@ -27,30 +27,34 @@ const ProjectCarousel = () => {
         </div>
 
         {/* Modal */}
-        {selectedProject && (
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50">
-            <div className="bg-gray-900 max-w-lg w-full rounded-2xl p-8 relative shadow-[0_0_50px_rgba(255,0,0,0.6)]">
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-xl font-bold"
-              >
-                ✕
-              </button>
-              <h3 className="text-2xl font-bold mb-4 text-red-500">
-                {selectedProject.title}
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                {selectedProject.description}
-              </p>
-              <div>
-                <h4 className="text-sm text-gray-400 mb-1">Tech Stack:</h4>
-                <p className="text-gray-200 font-mono">
-                  {selectedProject.tech}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+{selectedProject && (
+  <div
+    className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50 animate-fadeIn"
+    onClick={() => setSelectedProject(null)} // click outside closes modal
+  >
+    <div
+      className="bg-gray-900 max-w-lg w-full rounded-2xl p-8 relative shadow-[0_0_50px_rgba(255,0,0,0.6)] animate-slideUp"
+      onClick={(e) => e.stopPropagation()} // prevent close when clicking inside modal
+    >
+      <button
+        onClick={() => setSelectedProject(null)}
+        className="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-xl font-bold"
+      >
+        ✕
+      </button>
+      <h3 className="text-2xl font-bold mb-4 text-red-500">
+        {selectedProject.title}
+      </h3>
+      <p className="text-gray-300 leading-relaxed mb-4">
+        {selectedProject.description}
+      </p>
+      <div>
+        <h4 className="text-sm text-gray-400 mb-1">Tech Stack:</h4>
+        <p className="text-gray-200 font-mono">{selectedProject.tech}</p>
+      </div>
+    </div>
+  </div>
+)}
       </div>
     </section>
   );
