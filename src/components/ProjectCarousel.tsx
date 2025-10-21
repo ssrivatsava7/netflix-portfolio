@@ -78,8 +78,13 @@ const ProjectCarousel = () => {
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-48 object-cover rounded-lg mb-4 brightness-90"
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.src = "/assets/fallback-thumbnail.png"; // backup image if link fails
+                }}
+                className="w-full h-48 object-cover rounded-lg border border-gray-800 shadow-md transition-transform duration-300 hover:scale-105"
               />
+
 
               <h3 className="text-2xl font-bold mb-4 text-red-500">
                 {selectedProject.title}

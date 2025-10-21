@@ -8,7 +8,7 @@ Trained a Gradient Boosted Tree model in TensorFlow (~88% accuracy) to validate 
 Created interactive Plotly visualizations enabling dynamic exploration of survival trends across 800+ passengers.`,
     tech: "Python, Pandas, Plotly, Snowflake, TensorFlow",
     image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80",
+      "https://user-images.githubusercontent.com/110320717/196458805-ff6d976b-f649-4687-a480-ad59e2b5bd30.jpg",
   },
   {
     title: "Fault-Tolerant Distributed Data Storage System",
@@ -17,7 +17,7 @@ Created interactive Plotly visualizations enabling dynamic exploration of surviv
     description: `Built a 5-node distributed storage cluster handling 100k+ key-value records. Implemented Zookeeper-based leader election and GigaPaxos consensus to achieve totally ordered writes, automatic failover, and <100 ms latency under simulated crashes.`,
     tech: "Java, Cassandra, Zookeeper, GigaPaxos",
     image:
-      "https://images.unsplash.com/photo-1581090464777-4c2a0d47ad15?auto=format&fit=crop&w=1400&q=80",
+      "https://pandorafms.com/blog/wp-content/uploads/2023/04/Distributed-systems-features-and-best-practices.jpg",
   },
   {
     title: "Real-Time System Monitor",
@@ -26,7 +26,7 @@ Created interactive Plotly visualizations enabling dynamic exploration of surviv
     description: `Developed a real-time monitoring platform with Go backend, Python agents, and Flutter dashboard streaming metrics via gRPC/WebSockets with <200 ms latency and 120 FPS visuals.`,
     tech: "Go, Python, Flutter, gRPC, WebSockets",
     image:
-      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1400&q=80",
+      "https://miro.medium.com/v2/da:true/resize:fit:612/0*1gFXUgX4IXPL4rav",
   },
   {
     title: "Elevation-Based Navigation System",
@@ -44,7 +44,7 @@ Created interactive Plotly visualizations enabling dynamic exploration of surviv
     description: `Engineered a SageMaker-based classifier reaching 96% accuracy and 1,000+ predictions/s. Integrated Lambda + API Gateway for 200 ms model inference.`,
     tech: "AWS SageMaker, Lambda, API Gateway, S3, Python",
     image:
-      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?auto=format&fit=crop&w=1400&q=80",
+      "https://d2gr5kl7dt2z3t.cloudfront.net/blog/wp-content/uploads/2023/11/21033555/ICAD-insidermonkey-1700555753465.jpg",
   },
   {
     title: "Spotify Clone",
@@ -53,7 +53,7 @@ Created interactive Plotly visualizations enabling dynamic exploration of surviv
     description: `Built a responsive Next.js music app with Supabase/PostgreSQL backend and Stripe integration. Achieved 95% usability satisfaction and 20% faster playlist retrieval.`,
     tech: "React.js, Next.js, Supabase, PostgreSQL, Stripe, Tailwind CSS",
     image:
-      "https://images.unsplash.com/photo-1511376777868-611b54f68947?auto=format&fit=crop&w=1400&q=80",
+      "https://nextbigtechnology.com/wp-content/uploads/2024/01/Advanced-Features-Spotify-Clone-Apps-Development.jpg",
   },
   {
     title: "Multiplayer UNO Game App",
@@ -62,6 +62,6 @@ Created interactive Plotly visualizations enabling dynamic exploration of surviv
     description: `Developed a real-time multiplayer UNO game in React Native using WebSockets over TCP for <1% packet loss and 99.5% uptime; managed state with Redux.`,
     tech: "React Native, Redux, JavaScript, WebSockets",
     image:
-      "https://images.unsplash.com/photo-1607853200885-9c846bc8e22b?auto=format&fit=crop&w=1400&q=80",
+      "https://image.api.playstation.com/vulcan/ap/rnd/202309/1415/cb6c132dd86efed36cd6ce8e52bfe1fdc0c5063f14121b72.jpg",
   },
 ];
