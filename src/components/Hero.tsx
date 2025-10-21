@@ -1,29 +1,62 @@
+import { useEffect, useRef, useState } from "react";
 import { Button } from "../components/ui/button";
 import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile devices by screen width
+    const checkMobile = () => window.innerWidth < 768;
+    setIsMobile(checkMobile());
+    window.addEventListener("resize", () => setIsMobile(checkMobile()));
+
+    // Cleanup listener
+    return () => window.removeEventListener("resize", () => setIsMobile(checkMobile()));
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      if (isMobile) {
+        video.pause();
+      } else {
+        video.play().catch(() => {});
+      }
+    }
+  }, [isMobile]);
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-black text-white"
     >
-      {/* --- Video Background Layer --- */}
+      {/* --- Background Layer --- */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.15] saturate-[1.25] scale-105"
-        >
-          {/* 👇 Place your video inside public/assets/hero-video.mp4 */}
-          <source src="/assets/hero-video.mp4" type="video/mp4" />
-        </video>
+        {!isMobile ? (
+          <video
+            ref={videoRef}
+            muted
+            autoPlay
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0 brightness-[1.25] contrast-[1.15] saturate-[1.25] scale-105"
+          >
+            <source src="/assets/hero-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <img
+            src="/assets/hero-bg.jpg"
+            alt="Hero Background"
+            className="absolute inset-0 w-full h-full object-cover brightness-[1.1] contrast-[1.1] saturate-[1.15] scale-105"
+          />
+        )}
 
-        {/* --- Soft cinematic overlays --- */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/55" />
+        {/* --- Overlays for readability --- */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/50" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/50" />
-        <div className="absolute inset-0 backdrop-blur-[1px]" />
       </div>
 
       {/* --- Text Content --- */}
