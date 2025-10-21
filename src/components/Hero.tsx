@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import { ChevronDown } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
@@ -8,16 +7,23 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-black text-white"
     >
-      {/* --- Background Layer --- */}
+      {/* --- Video Background Layer --- */}
       <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="Hero Background"
-          className="w-full h-full object-cover brightness-[0.45] scale-105 animate-slow-zoom"
-        />
-        {/* Cinematic gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/70" />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover brightness-[1.25] contrast-[1.15] saturate-[1.25] scale-105"
+        >
+          {/* 👇 Place your video inside public/assets/hero-video.mp4 */}
+          <source src="/assets/hero-video.mp4" type="video/mp4" />
+        </video>
+
+        {/* --- Soft cinematic overlays --- */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/50" />
+        <div className="absolute inset-0 backdrop-blur-[1px]" />
       </div>
 
       {/* --- Text Content --- */}
@@ -27,15 +33,15 @@ const Hero = () => {
             <span className="block text-2xl sm:text-3xl md:text-4xl text-red-600 mb-2 tracking-wide animate-glow-pulse">
               Snigdha Srivatsava
             </span>
-            <span className="block text-gray-300 text-2xl sm:text-3xl mb-1 italic">
+            <span className="block text-gray-200 text-2xl sm:text-3xl mb-1 italic">
               Now Streaming:
             </span>
-            <span className="block text-gradient text-5xl sm:text-6xl md:text-7xl">
+            <span className="block text-gradient text-5xl sm:text-6xl md:text-7xl drop-shadow-[0_2px_8px_rgba(255,0,0,0.5)]">
               The Code Chronicles
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl leading-relaxed">
             Turning caffeine, code, and curiosity into scalable intelligence.
           </p>
 
