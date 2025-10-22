@@ -4,7 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../components/ui/dialog";
+} from "./ui/dialog";
 import { Calendar } from "lucide-react";
 
 const experiences = [
@@ -29,6 +29,20 @@ const experiences = [
       "https://www.equitybulls.com/equitybullsadmin/uploads/Tata%20Consultancy%20Services%20Limited%20-%20TCS%20-%20Logo%202.jpg",
     summary:
       "Developed scalable analytics solutions by migrating legacy systems to Python and PostgreSQL, improving throughput by 50%. Built real-time dashboards for 200+ analysts and automated anomaly detection pipelines using AWS Lambda, cutting alert response time by 66%.",
+  },
+  {
+    id: 3,
+    company: "Maruthi Medical Services",
+    role: "Freelance Engineer",
+    period: "Jan 2020 – Feb 2021",
+    location: "Hyderabad, India",
+    image:
+      "https://cdn.pixabay.com/photo/2016/11/16/17/27/question-mark-1829459_1280.png",
+    modalLogo:
+      "https://batstateu.edu.ph/wp-content/uploads/2020/11/Alangilan-CIT.jpg",
+    summary:
+      "Designed and deployed GoLang & PostgreSQL pipelines to centralize SKU inventory and expiry tracking across 3 warehouses. Replaced Excel-based processes with AWS S3 and Lambda-driven restocking automation, saving 40+ hours/month. Integrated pricing and demand forecasting to reduce stockouts by 30% and enhance procurement accuracy.",
+    hideText: true, // <--- new flag
   },
 ];
 
@@ -56,7 +70,7 @@ const Experience = () => {
                              hover:scale-105 transition-transform duration-300 
                              hover:shadow-[0_0_25px_rgba(255,0,0,0.5)]"
                 >
-                  {/* Background Image with Zoom Effect */}
+                  {/* Background Image */}
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-110"
                     style={{
@@ -65,24 +79,28 @@ const Experience = () => {
                   ></div>
 
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                  {!exp.hideText && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                  )}
 
-                  {/* Text Overlay */}
-                  <div className="relative z-10 p-6 h-64 flex flex-col justify-end">
-                    <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
-                    <p className="text-red-500 text-lg font-medium">
-                      {exp.role}
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-400 mt-1">
-                      <Calendar size={14} />
-                      <span>
-                        {exp.period} · {exp.location}
-                      </span>
+                  {/* Text Overlay (only if not hidden) */}
+                  {!exp.hideText && (
+                    <div className="relative z-10 p-6 h-64 flex flex-col justify-end">
+                      <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
+                      <p className="text-red-500 text-lg font-medium">
+                        {exp.role}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm text-gray-400 mt-1">
+                        <Calendar size={14} />
+                        <span>
+                          {exp.period} · {exp.location}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-red-500 text-sm font-medium group-hover:underline">
+                        ▶ Click for more info
+                      </p>
                     </div>
-                    <p className="mt-3 text-red-500 text-sm font-medium group-hover:underline">
-                      ▶ Click for more info
-                    </p>
-                  </div>
+                  )}
                 </div>
               </DialogTrigger>
 
@@ -91,7 +109,7 @@ const Experience = () => {
                 <DialogHeader>
                   <div className="flex flex-col items-center text-center space-y-4">
                     <img
-                      src={exp.image}
+                      src={exp.modalLogo || exp.image}
                       alt={exp.company}
                       className="h-20 object-contain rounded-md"
                     />
