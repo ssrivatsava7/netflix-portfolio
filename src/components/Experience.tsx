@@ -4,7 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
+} from "../components/ui/dialog";
 import { Calendar } from "lucide-react";
 
 const experiences = [
@@ -56,9 +56,9 @@ const Experience = () => {
                              hover:scale-105 transition-transform duration-300 
                              hover:shadow-[0_0_25px_rgba(255,0,0,0.5)]"
                 >
-                  {/* Background Image */}
+                  {/* Background Image with Zoom Effect */}
                   <div
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-110"
                     style={{
                       backgroundImage: `url(${exp.image})`,
                     }}
