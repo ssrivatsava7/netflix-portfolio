@@ -1,77 +1,84 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Code, Database, Globe, Smartphone, Cloud, Zap } from "lucide-react";
+import {
+  Code,
+  Server,
+  Globe,
+  Cloud,
+  Database,
+  Shield,
+  BarChart2,
+} from "lucide-react";
 
 const skills = [
   {
     icon: Code,
-    title: "Frontend Development",
-    description: "React, Next.js, TypeScript, Tailwind CSS",
+    title: "Programming Languages",
+    items:
+      "Python, Go, Java, C++, JavaScript (ES6+), TypeScript, SQL, Bash, PowerShell",
   },
   {
-    icon: Database,
-    title: "Backend & Databases",
-    description: "Node.js, PostgreSQL, Redis, MongoDB",
+    icon: Server,
+    title: "Backend & Frameworks",
+    items:
+      "FastAPI, Django, Spring Boot, Node.js, Flask, REST, gRPC, WebSockets, JWT, OAuth 2.0, NGINX",
   },
   {
     icon: Globe,
-    title: "Web Technologies",
-    description: "REST APIs, GraphQL, WebSockets, OAuth",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "React Native, Progressive Web Apps",
+    title: "Frontend & UI Frameworks",
+    items:
+      "React, Next.js, Angular, Streamlit, HTML5, CSS3, Tailwind CSS, Dash",
   },
   {
     icon: Cloud,
     title: "Cloud & DevOps",
-    description: "Docker, CI/CD, AWS, Vercel, Railway",
+    items:
+      "AWS, GCP, Azure, Docker, Kubernetes, Terraform, Jenkins, GitHub Actions, CI/CD, Spinnaker, Puppet, Packer",
   },
   {
-    icon: Zap,
-    title: "Performance",
-    description: "Optimization, Caching, SEO, Analytics",
+    icon: Database,
+    title: "Data, Databases & ML",
+    items:
+      "PostgreSQL, MySQL, MongoDB, Redis, DynamoDB, Cassandra, Elasticsearch, Kafka, Snowflake, Pandas, NumPy, Scikit-learn, PyTorch, dbt, Airflow, Power BI, Tableau",
+  },
+  {
+    icon: Shield,
+    title: "Systems, Security & Monitoring",
+    items:
+      "Linux (Ubuntu, CentOS), TLS, RBAC, OAuth, Prometheus, Grafana, OpenTelemetry, ELK Stack, OSI Model, DNS, TCP/IP",
   },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 sm:py-20 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 bg-black text-white">
+      <div className="container mx-auto px-6">
+        {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Skills & <span className="text-gradient">Expertise</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Skills <span className="text-red-500">& Expertise</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive toolkit for building modern, scalable applications
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            A versatile toolkit for software, data, and cloud engineering excellence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <Card
-                key={skill.title}
-                className="bg-card border-border hover-scale cursor-pointer"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
-                      <Icon className="text-primary" size={24} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold mb-2">{skill.title}</h3>
-                      <p className="text-muted-foreground text-sm">
-                        {skill.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skills.map((skill, i) => (
+            <div
+              key={i}
+              className="flex flex-col justify-center border border-gray-800 rounded-xl 
+                         p-6 bg-gray-900/40 hover:bg-gray-900/70 
+                         hover:shadow-[0_0_25px_rgba(255,0,0,0.4)] 
+                         transition-all duration-300 animate-fade-in"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <skill.icon className="text-red-500" size={22} />
+                <h3 className="text-xl font-bold">{skill.title}</h3>
+              </div>
+              <p className="text-gray-300">{skill.items}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
