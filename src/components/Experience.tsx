@@ -11,7 +11,7 @@ const experiences = [
   {
     id: 1,
     company: "Manning College of Information and Computer Sciences",
-    role: "Volunteer, CICStep",
+    role: "Software Developer",
     period: "Feb 2025 – Present",
     location: "Amherst, MA",
     image:
