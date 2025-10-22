@@ -52,7 +52,7 @@ const Experience = () => {
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Now Streaming: <span className="text-red-500">Experience</span>
+             <span className="text-red-500">Experience</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Stories from my professional journey.

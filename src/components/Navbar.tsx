@@ -14,13 +14,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ✅ Updated order
   const navLinks = [
     { label: "Home", href: "#home" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
-    { label: "Experience", href: "#experience" }, // changed from Blog
     { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Education", href: "#education" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
+    { label: "Projects", href: "#projects" },
   ];
 
   return (
@@ -31,6 +32,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
+          {/* Logo */}
           <a href="#home" className="flex items-center space-x-2">
             <span className="text-2xl sm:text-3xl font-bold text-primary">PORTFOLIO</span>
           </a>
@@ -46,6 +48,14 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <Button
+              variant="default"
+              size="sm"
+              className="bg-primary hover:bg-primary/90"
+              asChild
+            >
+              <a href="#contact">Connect</a>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -71,6 +81,14 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+              <Button
+                variant="default"
+                size="sm"
+                className="w-full bg-primary hover:bg-primary/90"
+                asChild
+              >
+                <a href="#contact">Connect</a>
+              </Button>
             </div>
           </div>
         )}

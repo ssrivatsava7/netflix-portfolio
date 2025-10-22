@@ -1,70 +1,63 @@
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
-  const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
-  ];
-
   return (
-    <footer className="bg-background border-t border-border py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <h3 className="text-2xl font-bold text-primary mb-4">PORTFOLIO</h3>
-            <p className="text-muted-foreground">
-              Building exceptional digital experiences with modern technologies.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {["Home", "Projects", "Skills", "Blog", "About"].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-bold mb-4">Get In Touch</h4>
-            <p className="text-muted-foreground mb-4">
-              Feel free to reach out for collaborations or just a friendly hello!
-            </p>
-            <div className="flex gap-4">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    aria-label={link.label}
-                    className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all hover-scale"
-                  >
-                    <Icon size={20} />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+    <footer id="contact" className="bg-black text-white py-12 border-t border-gray-800">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Left Section */}
+        <div>
+          <h2 className="text-2xl font-bold mb-3">PORTFOLIO</h2>
+          <p className="text-gray-400 max-w-xs">
+            Building exceptional digital experiences with modern technologies.
+          </p>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Portfolio. All rights reserved.</p>
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+          <ul className="space-y-2 text-gray-400">
+            <li><a href="#home" className="hover:text-primary">Home</a></li>
+            <li><a href="#about" className="hover:text-primary">About</a></li>
+            <li><a href="#education" className="hover:text-primary">Education</a></li>
+            <li><a href="#skills" className="hover:text-primary">Skills</a></li>
+            <li><a href="#experience" className="hover:text-primary">Experience</a></li>
+            <li><a href="#projects" className="hover:text-primary">Projects</a></li>
+            <li><a href="#contact" className="hover:text-primary">Connect</a></li>
+          </ul>
         </div>
+
+        {/* Get in Touch */}
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Get In Touch</h3>
+          <p className="text-gray-400 mb-4">
+            Feel free to reach out for collaborations or just a friendly hello!
+          </p>
+          <div className="flex space-x-5">
+            <a
+              href="https://github.com/ssrivatsava7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
+              <Github size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/snigdha-srivatsava"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a href="mailto:ssrivatsava2@gmail.com" className="hover:text-primary">
+              <Mail size={20} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10 text-center text-gray-500 text-sm border-t border-gray-800 pt-6">
+        © My Portfolio. All rights reserved.
       </div>
     </footer>
   );
