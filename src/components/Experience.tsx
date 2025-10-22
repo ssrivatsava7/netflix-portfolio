@@ -38,8 +38,7 @@ const experiences = [
     location: "Hyderabad, India",
     image:
       "https://cdn.pixabay.com/photo/2016/11/16/17/27/question-mark-1829459_1280.png",
-    modalLogo:
-      "https://batstateu.edu.ph/wp-content/uploads/2020/11/Alangilan-CIT.jpg",
+    modalLogo: "/src/assets/maruthi-logo.jpeg",
     summary:
       "Designed and deployed GoLang & PostgreSQL pipelines to centralize SKU inventory and expiry tracking across 3 warehouses. Replaced Excel-based processes with AWS S3 and Lambda-driven restocking automation, saving 40+ hours/month. Integrated pricing and demand forecasting to reduce stockouts by 30% and enhance procurement accuracy.",
     hideText: true, // <--- new flag
@@ -56,7 +55,7 @@ const Experience = () => {
             Now Streaming: <span className="text-red-500">Experience</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Stories from my professional journey — crafted with code.
+            Stories from my professional journey.
           </p>
         </div>
 

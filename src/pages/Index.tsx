@@ -5,6 +5,8 @@ import Skills from "../components/Skills";
 import About from "../components/About";
 import Footer from "../components/Footer";
 import Experience from "../components/Experience";
+import Education from "../components/Education";
+
 
 const Index = () => {
   return (
@@ -14,6 +16,7 @@ const Index = () => {
       <ProjectCarousel />
       <Skills />
       <Experience />
+      <Education />
       <About />
       <Footer />
     </div>
