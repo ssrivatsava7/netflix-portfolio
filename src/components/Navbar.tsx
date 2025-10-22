@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,8 +18,9 @@ const Navbar = () => {
     { label: "Home", href: "#home" },
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
-    { label: "Blog", href: "#blog" },
+    { label: "Experience", href: "#experience" }, // changed from Blog
     { label: "About", href: "#about" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
@@ -45,9 +46,6 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90">
-              Contact
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -73,9 +71,6 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="default" size="sm" className="w-full bg-primary hover:bg-primary/90">
-                Contact
-              </Button>
             </div>
           </div>
         )}
