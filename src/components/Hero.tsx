@@ -94,21 +94,23 @@ const Hero = () => {
             </Button>
 
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-red-600/60 text-white hover:bg-red-600/10 font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 transition-all duration-300"
-            >
-              ℹ More About Me
-            </Button>
+            
           </div>
         </div>
       </div>
 
       {/* --- Scroll Indicator --- */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <ChevronDown size={32} className="text-red-600" />
-      </div>
+      <div
+  onClick={() => {
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer animate-bounce"
+>
+  <ChevronDown size={32} className="text-red-600 hover:text-red-400 transition-colors" />
+</div>
     </section>
   );
 };
