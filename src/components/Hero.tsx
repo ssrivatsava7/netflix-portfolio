@@ -1,31 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Button } from "../components/ui/button";
 import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Detect mobile devices by screen width
-    const checkMobile = () => window.innerWidth < 768;
-    setIsMobile(checkMobile());
-    window.addEventListener("resize", () => setIsMobile(checkMobile()));
-
-    // Cleanup listener
-    return () => window.removeEventListener("resize", () => setIsMobile(checkMobile()));
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      if (isMobile) {
-        video.pause();
-      } else {
-        video.play().catch(() => {});
-      }
+      video
+        .play()
+        .then(() => {
+          // Video plays successfully
+        })
+        .catch(() => {
+          // Autoplay blocked or failed — can show fallback if needed
+        });
     }
-  }, [isMobile]);
+  }, []);
 
   return (
     <section
@@ -34,27 +26,20 @@ const Hero = () => {
     >
       {/* --- Background Layer --- */}
       <div className="absolute inset-0">
-        {!isMobile ? (
-          <video
-            ref={videoRef}
-            muted
-            autoPlay
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover z-0 brightness-[1.25] contrast-[1.15] saturate-[1.25] scale-105"
-          >
-            <source src="/assets/hero-video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <img
-            src="/assets/hero-bg.jpg"
-            alt="Hero Background"
-            className="absolute inset-0 w-full h-full object-cover brightness-[1.1] contrast-[1.1] saturate-[1.15] scale-105"
-          />
-        )}
+        <video
+          ref={videoRef}
+          muted
+          autoPlay
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover z-0 brightness-[1.25] contrast-[1.15] saturate-[1.25] scale-105"
+        >
+          <source src="/assets/hero-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-        {/* --- Overlays for readability --- */}
+        {/* Overlays for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/50" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/50" />
       </div>
@@ -82,35 +67,32 @@ const Hero = () => {
             <Button
               size="lg"
               onClick={() => {
-              const section = document.getElementById("projects");
-              if (section) {
-               section.scrollIntoView({ behavior: "smooth" });
-              }
+                const section = document.getElementById("projects");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
               }}
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 
                 shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.7)] transition-shadow duration-300"
-              >
-               ▶ Play My Work
+            >
+              ▶ Play My Work
             </Button>
-
-
-            
           </div>
         </div>
       </div>
 
       {/* --- Scroll Indicator --- */}
       <div
-  onClick={() => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  }}
-  className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer animate-bounce"
->
-  <ChevronDown size={32} className="text-red-600 hover:text-red-400 transition-colors" />
-</div>
+        onClick={() => {
+          const aboutSection = document.getElementById("about");
+          if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer animate-bounce"
+      >
+        <ChevronDown size={32} className="text-red-600 hover:text-red-400 transition-colors" />
+      </div>
     </section>
   );
 };

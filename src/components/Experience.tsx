@@ -18,6 +18,7 @@ const experiences = [
       "https://www.amherstindy.org/wp-content/uploads/2022/09/Screen-Shot-2022-09-23-at-8.16.42-AM.png",
     summary:
       "Built and deployed an AI-powered academic chatbot using GPT and FastAPI to automate student-faculty communication for 200+ students, cutting manual email load by 60% and improving response speed. Integrated secure JWT authentication and analytics dashboards to enhance transparency and performance tracking.",
+    hideText: false,
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const experiences = [
       "https://www.equitybulls.com/equitybullsadmin/uploads/Tata%20Consultancy%20Services%20Limited%20-%20TCS%20-%20Logo%202.jpg",
     summary:
       "Developed scalable analytics solutions by migrating legacy systems to Python and PostgreSQL, improving throughput by 50%. Built real-time dashboards for 200+ analysts and automated anomaly detection pipelines using AWS Lambda, cutting alert response time by 66%.",
+    hideText: false,
   },
   {
     id: 3,
@@ -36,12 +38,14 @@ const experiences = [
     role: "Freelance Engineer",
     period: "Jan 2020 – Feb 2021",
     location: "Hyderabad, India",
+    // 🔗 Pixabay image used as the outer card
     image:
       "https://cdn.pixabay.com/photo/2016/11/16/17/27/question-mark-1829459_1280.png",
-    modalLogo: "/src/assets/maruthi-logo.jpeg",
+    // 🏥 Local logo shown inside modal
+    modalLogo: "/assets/maruthi-logo.jpeg",
     summary:
       "Designed and deployed GoLang & PostgreSQL pipelines to centralize SKU inventory and expiry tracking across 3 warehouses. Replaced Excel-based processes with AWS S3 and Lambda-driven restocking automation, saving 40+ hours/month. Integrated pricing and demand forecasting to reduce stockouts by 30% and enhance procurement accuracy.",
-    hideText: true, // <--- new flag
+    hideText: true, // ✅ only show image outside
   },
 ];
 
@@ -52,7 +56,7 @@ const Experience = () => {
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-             <span className="text-red-500">Experience</span>
+            <span className="text-red-500">Experience</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Stories from my professional journey.
@@ -67,38 +71,43 @@ const Experience = () => {
                 <div
                   className="relative rounded-xl overflow-hidden cursor-pointer group 
                              hover:scale-105 transition-transform duration-300 
-                             hover:shadow-[0_0_25px_rgba(255,0,0,0.5)]"
+                             hover:shadow-[0_0_25px_rgba(255,0,0,0.5)] bg-gray-900"
                 >
-                  {/* Background Image */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-110"
-                    style={{
-                      backgroundImage: `url(${exp.image})`,
-                    }}
-                  ></div>
-
-                  {/* Gradient Overlay */}
-                  {!exp.hideText && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
-                  )}
-
-                  {/* Text Overlay (only if not hidden) */}
-                  {!exp.hideText && (
-                    <div className="relative z-10 p-6 h-64 flex flex-col justify-end">
-                      <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
-                      <p className="text-red-500 text-lg font-medium">
-                        {exp.role}
-                      </p>
-                      <div className="flex items-center gap-2 text-sm text-gray-400 mt-1">
-                        <Calendar size={14} />
-                        <span>
-                          {exp.period} · {exp.location}
-                        </span>
+                  {exp.hideText ? (
+                    // ✅ MMS card shows only its image
+                    <img
+                      src={exp.image}
+                      alt={`${exp.company} card`}
+                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    // 🔸 Normal cards with text overlay
+                    <>
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-110"
+                        style={{
+                          backgroundImage: `url(${exp.image})`,
+                        }}
+                      ></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                      <div className="relative z-10 p-6 h-64 flex flex-col justify-end">
+                        <h3 className="text-2xl font-bold mb-1">
+                          {exp.company}
+                        </h3>
+                        <p className="text-red-500 text-lg font-medium">
+                          {exp.role}
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-gray-400 mt-1">
+                          <Calendar size={14} />
+                          <span>
+                            {exp.period} · {exp.location}
+                          </span>
+                        </div>
+                        <p className="mt-3 text-red-500 text-sm font-medium group-hover:underline">
+                          ▶ Click for more info
+                        </p>
                       </div>
-                      <p className="mt-3 text-red-500 text-sm font-medium group-hover:underline">
-                        ▶ Click for more info
-                      </p>
-                    </div>
+                    </>
                   )}
                 </div>
               </DialogTrigger>
@@ -110,7 +119,7 @@ const Experience = () => {
                     <img
                       src={exp.modalLogo || exp.image}
                       alt={exp.company}
-                      className="h-20 object-contain rounded-md"
+                      className="h-24 w-24 object-contain brightness-110 contrast-125"
                     />
                     <DialogTitle className="text-2xl font-bold">
                       {exp.company}
