@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { projects } from "../data/projectsData";
+import { Github } from "lucide-react";
 
 const ProjectCarousel = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  // 🧩 Map GitHub links by project title
+  const githubLinks: Record<string, string> = {
+    "Titanic Survival Analysis": "https://github.com/ssrivatsava7/645FinalProject",
+    "Elevation-Based Navigation System": "https://github.com/ssrivatsava7/Coders_SSPR_Elena",
+    "Real-Time System Monitor": "https://github.com/ssrivatsava7/Scratch/tree/main/frontend",
+  };
 
   return (
     <section id="projects" className="relative py-20 bg-black text-white">
@@ -75,29 +83,45 @@ const ProjectCarousel = () => {
                 ✕
               </button>
 
+              {/* Image */}
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 loading="lazy"
                 onError={(e) => {
-                  e.currentTarget.src = "/assets/fallback-thumbnail.png"; // backup image if link fails
+                  e.currentTarget.src = "/assets/fallback-thumbnail.png";
                 }}
                 className="w-full h-48 object-cover rounded-lg border border-gray-800 shadow-md transition-transform duration-300 hover:scale-105"
               />
 
+              {/* Title with GitHub Icon beside it */}
+              <div className="flex items-center justify-center gap-3 mt-4 mb-4">
+                <h3 className="text-2xl font-bold text-red-500">
+                  {selectedProject.title}
+                </h3>
 
-              <h3 className="text-2xl font-bold mb-4 text-red-500">
-                {selectedProject.title}
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-4 whitespace-pre-line">
+                {githubLinks[selectedProject.title] && (
+                  <a
+                    href={githubLinks[selectedProject.title]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="View Repository"
+                    className="text-gray-400 hover:text-white transition-transform hover:scale-110"
+                  >
+                    <Github className="w-6 h-6" />
+                  </a>
+                )}
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-300 leading-relaxed mb-4 whitespace-pre-line text-center">
                 {selectedProject.description}
               </p>
 
-              <div>
+              {/* Tech Stack */}
+              <div className="text-center">
                 <h4 className="text-sm text-gray-400 mb-1">Tech Stack:</h4>
-                <p className="text-gray-200 font-mono">
-                  {selectedProject.tech}
-                </p>
+                <p className="text-gray-200 font-mono">{selectedProject.tech}</p>
               </div>
             </div>
           </div>
