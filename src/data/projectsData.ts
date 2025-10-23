@@ -29,6 +29,18 @@ Created interactive Plotly visualizations enabling dynamic exploration of surviv
       "https://miro.medium.com/v2/da:true/resize:fit:612/0*1gFXUgX4IXPL4rav",
   },
   {
+  title: "Netflix Portfolio",
+  teaser: "A cinematic personal portfolio inspired by Netflix UI.",
+  image: "https://www.cantechletter.com/wp-content/uploads/Netflix2-scaled.jpeg", // or replace with your actual hero thumbnail
+  description: `Developed a dynamic, Netflix-inspired portfolio showcasing projects and experience through cinematic visuals and interactive motion effects.
+Built with Vite, React, and Tailwind CSS, the interface features a modular component architecture with smooth transitions, responsive layout, and integrated animations.
+Implemented custom sections like Featured Projects, Experience Timeline, and an interactive Hero with video backgrounds.`,
+  tech: "React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Lucide Icons",
+
+    
+},
+
+  {
     title: "Elevation-Based Navigation System",
     teaser:
       "Ever wish Google Maps cared about hills? This app plots routes that respect your legs.",

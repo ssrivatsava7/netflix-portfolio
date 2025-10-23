@@ -8,10 +8,12 @@ const ProjectCarousel = () => {
 
   // 🧩 Map GitHub links by project title
   const githubLinks: Record<string, string> = {
-    "Titanic Survival Analysis": "https://github.com/ssrivatsava7/645FinalProject",
-    "Elevation-Based Navigation System": "https://github.com/ssrivatsava7/Coders_SSPR_Elena",
-    "Real-Time System Monitor": "https://github.com/ssrivatsava7/Scratch/tree/main/frontend",
-  };
+  "Titanic Survival Analysis": "https://github.com/ssrivatsava7/645FinalProject",
+  "Elevation-Based Navigation System": "https://github.com/ssrivatsava7/Coders_SSPR_Elena",
+  "Real-Time System Monitor": "https://github.com/ssrivatsava7/Scratch/tree/main/frontend",
+  "Netflix Portfolio": "https://github.com/ssrivatsava7/netflix-portfolio", // 🆕 added
+};
+
 
   return (
     <section id="projects" className="relative py-20 bg-black text-white">
