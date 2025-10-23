@@ -12,6 +12,7 @@ const ProjectCarousel = () => {
   "Elevation-Based Navigation System": "https://github.com/ssrivatsava7/Coders_SSPR_Elena",
   "Real-Time System Monitor": "https://github.com/ssrivatsava7/Scratch/tree/main/frontend",
   "Netflix Portfolio": "https://github.com/ssrivatsava7/netflix-portfolio", // 🆕 added
+  "Fault-Tolerant Distributed Data Storage System": "https://github.com/ssrivatsava7/Fault-Tolerant-Distributed-System"
 };
 
 
